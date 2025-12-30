@@ -1,0 +1,18 @@
+taskKey="com.codegym.task.task22.task2208"\n\nBuild a WHERE query
+
+
+Build part of a WHERE query using StringBuilder.
+If a parameter is null, then it shouldn&#39;t be included in the query.
+Example:
+{name=Johnson, country=United States, city=Los Angeles, age=null}
+Result:
+name = &#39;Johnson&#39; and country = &#39;United States&#39; and city = &#39;Los Angeles&#39;
+
+
+Требования:
+1.	The getQuery method must have one Map parameter.
+2.	The getQuery method must return a String.
+3.	The getQuery method must be static.
+4.	The getQuery method must return a string built according to the rules specified in the task conditions.
+
+

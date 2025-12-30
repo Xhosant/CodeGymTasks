@@ -1,0 +1,24 @@
+taskKey="com.codegym.task.task28.task2801"\n\nMastering switch
+
+
+Implement the switchTest method:
+1. Don&#39;t use conditional operators.
+2. Use 1 switch with 2 cases and 1 default.
+3. Expected output:
+Output for E1.A: &quot;it&#39;s E1.A&quot;
+Output for E1.B: &quot;it&#39;s E1.B&quot;
+Output for E1.C: &quot;it&#39;s E1.C&quot;
+Output for E1.Y: &quot;it&#39;s E1.Y&quot;
+Output for E2.D: &quot;it&#39;s E2.D&quot;
+Output for E2.E: &quot;it&#39;s E2.E&quot;
+Output for E2.F: &quot;it&#39;s E2.F&quot;
+Output for all other values: &quot;undefined&quot;.
+
+
+Требования:
+1.	The Solution class must have a switchTest method and the enums E1, E2, and E3.
+2.	Implement the switchTest method using 1 switch with 2 cases and 1 default.
+3.	The console output must match the task conditions.
+4.	Don&#39;t use conditional operators.
+
+

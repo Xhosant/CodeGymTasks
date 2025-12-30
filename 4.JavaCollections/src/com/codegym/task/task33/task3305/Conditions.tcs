@@ -1,0 +1,35 @@
+taskKey="com.codegym.task.task33.task3305"\n\nUsing JSON to convert from one class to another
+
+
+REQUIRED CONNECTED LIBRARIES: Jackson Core, Bind and Annotation 2.8.1
+
+Add JSON annotations so that the main method produces the following:
+{
+&quot;className&quot; : &quot;.ParkingLot&quot;,
+&quot;name&quot; : &quot;Super ParkingLot&quot;,
+&quot;city&quot; : &quot;San Francisco&quot;,
+&quot;vehicles&quot; : [ {
+&quot;className&quot; : &quot;com.codegym.task.task33.task3305.RaceBike&quot;,
+&quot;name&quot; : &quot;Simba&quot;,
+&quot;owner&quot; : &quot;Peter&quot;,
+&quot;age&quot; : 2
+}, {
+&quot;className&quot; : &quot;com.codegym.task.task33.task3305.Motorbike&quot;,
+&quot;name&quot; : &quot;Manny&quot;,
+&quot;owner&quot; : null
+}, {
+&quot;className&quot; : &quot;com.codegym.task.task33.task3305.Car&quot;
+} ]
+}
+
+Hint: just two classes.
+
+P.S. The name parameter must be equal to &quot;car&quot;, &quot;motorbike&quot;, and &quot;racingbike&quot; for the corresponding classes.
+
+
+Требования:
+1.	The screen output must match the task conditions.
+2.	The ParkingLot class must be annotated with @JsonTypeInfo with a suitable set of parameters.
+3.	The Vehicle class must be annotated with @JsonTypeInfo with a suitable set of parameters.
+
+

@@ -1,0 +1,80 @@
+taskKey="com.codegym.games.spaceinvaders.part10"\n\nSpace Invaders (Part 10/34)
+
+According to the rules of the game, the fewer ships there are, the faster they move from side to side.
+We&#39;ll implement this relationship in the getSpeed method. Note that the enemy ships&#39; speed must not exceed 2.
+We&#39;ll also give the EnemyFleet class a direction field and a move method.
+We&#39;ll need to give the SpaceInvadersGame class a moveSpaceObjects method. That&#39;s where we&#39;ll move objects.
+The ships move at each step of the game, so the moveSpaceObjects method must be called in the onTurn method.
+To immediately see the movement on the screen, you need to call the moveSpaceObjects method before redrawing the screen.
+
+
+Требования:
+1.	The EnemyFleet class must have a private Direction direction field that is initialized to Direction.RIGHT when it is declared.
+2.	The EnemyFleet class must have a private double getSpeed() method.
+3.	The getSpeed() method must return the minimum of two values: 2.0 and (3.0 / number of ships in the ships list).
+4.	The EnemyFleet class must have a public void move() method.
+5.	The SpaceInvadersGame class must have a private void moveSpaceObjects() method.
+6.	In the moveSpaceObjects() method, you need to call the move() method on the enemyFleet object.
+7.	In the SpaceInvadersGame class&#39;s onTurn(int) method, you need to call the moveSpaceObjects() method before the call to the drawScene() method.
+
+
+Space Invaders (Part 10/34)
+
+Everything will move in the game, which means that we need to specify the direction in which objects are moving. It is convenient to store directions in an enum.
+We&#39;ll describe the motion of an enemy ship in the move() method. The method will change the appropriate coordinate depending on direction and speed.
+The downward speed will be a constant 2. Because the enemy fleet moves back and forth between edges of the playing field, we need to watch for when the fleet reaches the edges.
+
+
+
+Space Invaders (Part 10/34)
+
+Let&#39;s continue working on the enemy fleet. To do this, we need to fill the ships list in the createShips() method.
+Keep in mind that the best distance from the top of the screen to the top row of ships is 12 cells.
+To add the enemy fleet to the game, we&#39;ll create an enemyFleet field in the SpaceInvadersGame class and initialize it to a new EnemyFleet object.
+The enemy ships are created when the createShips method is called in the EnemyFleet constructor.
+The game is dynamic, so we&#39;ll need to regularly redraw the screen and perform other actions. Everything that happens at each step is performed in the onTurn(int) method.
+We&#39;ll use the setTurnTimer method to set how often this method is called. It takes an argument that determines how long each step is in milliseconds.
+In other words, given a step of 40 ms (0.04 second), the onTurn method will be called 25 times per second (1 / 0.04 second).
+If you&#39;ve done everything correctly, you&#39;ll see the enemy fleet when you run the program.
+
+
+
+Space Invaders (Part 10/34)
+
+In this part of the project, we&#39;ll prepare the foundation for the enemy fleet. To do this, we&#39;ll create an EnemyFleet class.
+It will store the list of ships, number of rows of ships (ROWS_COUNT), number of ships per row (COLUMNS_COUNT),
+and distance between left corners of adjacent ships (STEP). We&#39;ll create the ships and add them to the ships list in the createShips method,
+which we will implement later.
+
+
+
+Space Invaders (Part 10/34)
+
+Now we&#39;ll create a Ship class that will store properties that all spaceships share. It will have a setStaticView method that at present will set a matrix.
+Later, it will set an animation. First, we make a class for ships in the enemy&#39;s fleet: EnemyShip. We&#39;ve provided its matrix for you in the ShapeMatrix class.
+
+
+
+Space Invaders (Part 10/34)
+
+Stars aren&#39;t the only objects in this game. We will also need spaceships, of course! A game object&#39;s appearance is determined by a matrix,
+so we&#39;ll add a matrix field to the GameObject class. In addition to the object&#39;s outline, the matrix contains the ordinals of colors
+in the com.codegym.engine.cell.Color enum. We&#39;ll put the object&#39;s dimensions into separate width and height fields. To draw a game object on the screen,
+we&#39;ll create a draw(Game game) method. For each cell in the matrix, we&#39;ll have this method call the setCellValueEx(int x, int y, Color color, String text)
+method on the Game object passed to it as an argument. To draw the matrix on the playing field, we need to consider the x and y coordinates of the GameObject object.
+These coordinates are the coordinates of the upper left cell of the matrix on the playing field.
+
+For example:
+
+
+As you can see from the example, the upper left corner of the game object&#39;s matrix has coordinates x = 2 and y = 4 on the playing field.
+However, relative to its own matrix, these coordinates are x = 0 and y = 0. Accordingly, the setCellValueEx method will be passed the coordinates
+of the upper left corner of the game object&#39;s matrix on the playing field + the coordinates of the cell within the game object&#39;s matrix (x = 2 + 0, y = 4 + 0).
+
+For example:
+game.setCellValueEx(x of the object on the playing field + x in the matrix, y of the object on the playing field + y in the matrix, color, empty string);
+Note that color is the color of the cell in the object&#39;s matrix. You can get it like this: Color.values()[matrix[i][j]],
+where i is the y coordinate in matrix and j is the x coordinate in matrix.
+
+
+
